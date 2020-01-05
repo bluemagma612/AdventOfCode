@@ -47,13 +47,21 @@ let inputs = {
 }
 
 inputs.values.every((val, indx) => {
+    // always check for opcodes at index zero, otherwise check if the current index is divisble by 4
+    // if index is divisible by 4, run the appropriate operation
     if (indx === 0 || indx % 4 === 0) {
         if (val === 1 ) {
+            // get the value of the position to go to, from position 1
             let addpos1 = inputs.values[indx + 1];
+            // get the value from that position
             let addval1 = inputs.values[addpos1];
+            // get the value of the position to go to, from position 1
             let addpos2 =  inputs.values[indx + 2];
+            // get the value from that position
             let addval2 = inputs.values[addpos2];
+            // get the sum from the retrieved values
             let addsum =  addval1 + addval2;
+            // get the value of the position to place the sum, from position 3
             let addput = inputs.values[indx + 3];
             inputs.values[addput] = addsum;
             return true;
@@ -74,7 +82,6 @@ inputs.values.every((val, indx) => {
         }
     }
     return true;
-    
 });
 
 
